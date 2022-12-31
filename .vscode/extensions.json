@@ -1,0 +1,4 @@
+{
+    "recommendations": ["dbaeumer.vscode-eslint","bradlc.vscode-tailwindcss","lifeart.vscode-ember-unstable","redhat.vscode-yaml","lifeart.vscode-glimmer-syntax","mikestead.dotenv","esbenp.prettier-vscode", "usernamehw.errorlens"],
+    "unwantedRecommendations": ["HookyQR.beautify","embertooling.prettier-for-handlebars-vscode"]
+}

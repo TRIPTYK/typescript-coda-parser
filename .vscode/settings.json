@@ -1,0 +1,46 @@
+{
+  "eslint.validate": ["typescript", "javascript"],
+  "gitscrum.company": "triptyk",
+  "gitscrum.project-slug": "krs-logistics",
+  "jest.rootPath": "packages/backend",
+  "jest.jestCommandLine": "pnpm test --",
+  // These are all my auto-save
+  "editor.formatOnSave": true,
+  "css.validate": false,
+  // turn it off for JS and JSX, we will do this via eslint
+  "[javascript]": {
+    "editor.bracketPairColorization.enabled": true,
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.bracketPairColorization.enabled": true,
+    "editor.formatOnSave": false
+  },
+  "[handlebars]": {
+    "editor.bracketPairColorization.enabled": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "els.local.useBuiltinLinting": true,
+  "els.local.ignoredProjects": ["!frontend"],
+  // show eslint icon at bottom toolbar
+  "eslint.alwaysShowStatus": false,
+  // tell the ESLint plugin to run on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "eslint.format.enable": true,
+  "eslint.workingDirectories": ["packages"],
+  "tailwindCSS.emmetCompletions": true,
+  "editor.minimap.enabled": false,
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "Handlebars": "html"
+  },
+  "keyboard.touchbar.enabled": false,
+  "css.format.enable": false,
+  "less.format.enable": false,
+  "scss.format.enable": false
+}

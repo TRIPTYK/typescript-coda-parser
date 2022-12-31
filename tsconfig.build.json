@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "target": "ES2022",
+    "strict": true,
+    "moduleResolution": "node",
+    "module": "ES2022",
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "incremental": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": false
+  },
+  "exclude": ["node_modules"]
+}

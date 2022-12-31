@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "strict": true,
+    "declarationMap": false,
+    "target": "ES2022",
+    "moduleResolution": "node",
+    "module": "ES2022",
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "outDir": "./dist",
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["dist/**/*", "node_modules/**/*"],
+  "include": ["mikro-orm.config.ts", "migrations", "src/**/*", "tests/**/*"]
+}
