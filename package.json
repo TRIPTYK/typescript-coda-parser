@@ -8,10 +8,10 @@
     "lint": "eslint \"src/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
     "lint:duplication": "jscpd --pattern \"src/**/*.ts\" --exitCode 1",
-    "start:dev": "NODE_ENV=development nodemon --watch './src/**/*.ts' --exec 'node --loader ts-node/esm' ./src/application.bootstrap.ts",
-    "start:test": "NODE_ENV=test INTERACTIVE_TESTS=true nodemon --watch './src/**/*.ts' --exec 'node --loader ts-node/esm' ./src/application.bootstrap.ts",
-    "start:test:ci": "NODE_ENV=test  INTERACTIVE_TESTS=true node --loader 'ts-node/esm' ./src/application.bootstrap.ts",
-    "start:production": "NODE_ENV=production node ./dist/src/application.bootstrap.js"
+    "start:dev": "NODE_ENV=development nodemon --watch './src/**/*.ts' --exec 'node --loader ts-node/esm' ./src/index.ts",
+    "start:test": "NODE_ENV=test INTERACTIVE_TESTS=true nodemon --watch './src/**/*.ts' --exec 'node --loader ts-node/esm' ./src/index.ts",
+    "start:test:ci": "NODE_ENV=test  INTERACTIVE_TESTS=true node --loader 'ts-node/esm' ./src/index.ts",
+    "start:production": "NODE_ENV=production node ./dist/src/index.js"
   },
   "type": "module",
   "author": "Gilles BERTRAND",
