@@ -7,7 +7,7 @@ export default async function parseCodafile (filePath : string) {
 }
 
 function parse (codaLines:string[]) {
-  return parseLines(codaLines)
+  return parseLines(codaLines);
 }
 
 async function fileToCodaLines (codaFile:string) {

@@ -1,4 +1,4 @@
-import { validateStringDigitOnly, validateStringLength } from '../helpers';
+import { validateStringDigitOnly, validateStringLength } from '../helpers.js';
 
 export default class Amount {
   public declare _value:number
@@ -11,6 +11,7 @@ export default class Amount {
     } else {
       validateStringLength(amountAsString, 15, 'Amount');
     }
+
     this._value = parseFloat(amountAsString) * negative / 1000;
   }
 

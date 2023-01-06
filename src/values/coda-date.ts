@@ -1,4 +1,4 @@
-import { formatDateString, validateStringDigitOnly, validateStringLength } from '../helpers'
+import { formatDateString, validateStringDigitOnly, validateStringLength } from '../helpers.js'
 
 export default class CodaDate {
   public declare _value:Date

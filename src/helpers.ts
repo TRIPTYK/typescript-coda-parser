@@ -11,16 +11,14 @@ function validateStringDigitOnly (value:string, typeName:string) {
 }
 
 function validateStringMultipleLengths (value:string, expectedLengthArray:number[], typeName:string) {
-  expectedLengthArray.forEach(expectedLength => {
-    if (value.length === expectedLength) {
-      return true;
-    }
-  })
-  throw new Error(`${value} is invalid for type ${typeName} Length is not valid`);
+  if (expectedLengthArray.filter(expectedLength => value.length === expectedLength).length === 0) throw new Error(`${value} is invalid for type ${typeName} Length is not valid`);
+  return true
 }
 
 function formatDateString (dateCoda:string) {
-  return '20' + dateCoda.substring(4, 2) + '-' + dateCoda.substring(2, 2) + '-' + dateCoda.substring(0, 2);
+  return '20' + dateCoda.substring(4, 6) + '-' + dateCoda.substring(2, 4) + '-' + dateCoda.substring(0, 2);
 }
-
-export { validateStringDigitOnly, validateStringLength, validateStringMultipleLengths, formatDateString }
+function getTrimmedData (data:string, startPosition:number) {
+  return data.substring(startPosition).trim()
+}
+export { validateStringDigitOnly, validateStringLength, validateStringMultipleLengths, formatDateString, getTrimmedData }

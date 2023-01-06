@@ -1,10 +1,10 @@
-import Helpers from '../helpers';
+import { validateStringDigitOnly, validateStringLength } from '../helpers.js';
 
 export default class StatementSequenceNumber {
   public declare value:number;
   constructor (value:string) {
-    Helpers.validateStringLength(value, 3, 'StatementSequenceNumber');
-    Helpers.validateStringDigitOnly(value, 'StatementSequenceNumber');
+    validateStringLength(value, 3, 'StatementSequenceNumber');
+    validateStringDigitOnly(value, 'StatementSequenceNumber');
     this.value = parseInt(value);
   }
 }

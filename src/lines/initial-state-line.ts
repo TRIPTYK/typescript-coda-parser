@@ -7,33 +7,33 @@ import type { Line } from './line.js';
 import { LineType } from './LineType.enum.js';
 
 export default class InitialStateLine implements Line {
-  constructor (
-    public _paperStatementSquenceNumber :PaperStatementSequenceNumber,
-    public _statementSequenceNumber : StatementSequenceNumber,
-    public _account : Account,
-    public _balance:Amount,
-    public _date:CodaDate
+  public constructor (
+    private _paperStatementSquenceNumber :PaperStatementSequenceNumber,
+    private _statementSequenceNumber : StatementSequenceNumber,
+    private _account : Account,
+    private _balance:Amount,
+    private _date:CodaDate
   ) {
 
   }
 
-  get account () {
+  public get account () {
     return this._account;
   }
 
-  get balance () {
+  public get balance () {
     return this._balance;
   }
 
-  get date () {
+  public get date () {
     return this._date;
   }
 
-  get paperStatementSquenceNumber () {
+  public get paperStatementSquenceNumber () {
     return this._paperStatementSquenceNumber;
   }
 
-  get statementSequenceNumber () {
+  public get statementSequenceNumber () {
     return this._statementSequenceNumber
   }
 

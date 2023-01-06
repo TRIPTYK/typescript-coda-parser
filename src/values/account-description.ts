@@ -1,4 +1,4 @@
-import { validateStringLength } from '../helpers';
+import { validateStringLength } from '../helpers.js';
 
 export default class AccountDescription {
   constructor (public _value: string) {

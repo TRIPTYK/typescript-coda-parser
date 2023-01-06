@@ -2,7 +2,8 @@ export enum LineType {
     /// <summary>
     /// The header record (00).
     /// </summary>
-    Identification = 00,
+    // eslint-disable-next-line no-octal
+    Identification = 0o0,
 
     /// <summary>
     /// The old balance record (10).

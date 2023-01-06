@@ -1,4 +1,4 @@
-import { validateStringMultipleLengths } from '../helpers';
+import { validateStringMultipleLengths } from '../helpers.js';
 
 export default class AccountName {
   constructor (public _value:string) {
