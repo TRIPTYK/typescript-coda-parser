@@ -7,10 +7,10 @@ import type SequenceNumberDetail from '../values/sequence-number-detail.js';
 import type SequenceNumber from '../values/sequence-number.js';
 import type StatementSequenceNumber from '../values/statement-sequence-number.js';
 import type TransactionCode from '../values/transaction-code.js';
-import type { Line } from './line.js';
+import Line from './line.js';
 import { LineType } from './LineType.enum.js';
 
-export default class TransactionPart1Line implements Line {
+export default class TransactionPart1Line extends Line {
   constructor (
         private _sequenceNumber: SequenceNumber,
         private _sequenceNumberDetail: SequenceNumberDetail,
@@ -23,7 +23,7 @@ export default class TransactionPart1Line implements Line {
         private _statementSequenceNumber:StatementSequenceNumber,
         private _globalisationCode:GlobalizationCode
   ) {
-
+    super()
   }
 
   get amount (): Amount { return this._amount; }

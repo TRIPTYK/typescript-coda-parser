@@ -1,4 +1,4 @@
-import type { Line } from '../lines/line.js';
+import type Line from '../lines/line.js';
 import TransactionPart1Line from '../lines/transaction-part1-line.js';
 import BankReference from '../values/bank-reference.js';
 import SequenceNumber from '../values/sequence-number.js';

@@ -1,15 +1,17 @@
 import type Message from '../values/message.js';
 import type SequenceNumberDetail from '../values/sequence-number-detail.js';
 import type SequenceNumber from '../values/sequence-number.js';
-import type { Line } from './line.js';
+import Line from './line.js';
 import { LineType } from './LineType.enum.js';
 
-export default class InformationPart2Line implements Line {
+export default class InformationPart2Line extends Line {
   constructor (
         private _sequenceNumber: SequenceNumber,
         private _sequenceNumberDetail:SequenceNumberDetail,
         private _message :Message
-  ) {}
+  ) {
+    super()
+  }
 
   get sequenceNumber (): SequenceNumber { return this._sequenceNumber; }
   get sequenceNumberDetail (): SequenceNumberDetail { return this._sequenceNumberDetail; }

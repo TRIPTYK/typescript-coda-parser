@@ -1,5 +1,5 @@
 import InformationPart1Line from '../lines/information-part1-line.js';
-import type { Line } from '../lines/line.js';
+import type Line from '../lines/line.js';
 import BankReference from '../values/bank-reference.js';
 import MessageOrStructuredMessage from '../values/message-or-structured-message.js';
 import SequenceNumber from '../values/sequence-number.js';

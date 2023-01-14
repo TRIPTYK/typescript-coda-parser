@@ -3,17 +3,19 @@ import type MessageOrStructuredMessage from '../values/message-or-structured-mes
 import type SequenceNumberDetail from '../values/sequence-number-detail.js';
 import type SequenceNumber from '../values/sequence-number.js';
 import type TransactionCode from '../values/transaction-code.js';
-import type { Line } from './line.js';
+import Line from './line.js';
 import { LineType } from './LineType.enum.js';
 
-export default class InformationPart1Line implements Line {
+export default class InformationPart1Line extends Line {
   constructor (
     private _sequenceNumber:SequenceNumber,
     private _sequenceNumberDetail:SequenceNumberDetail,
     private _bankReference:BankReference,
     private _transactionCode:TransactionCode,
     private _messageOrStructuredMessage:MessageOrStructuredMessage
-  ) {}
+  ) {
+    super()
+  }
 
   get bankReference (): BankReference { return this._bankReference; }
   get messageOrStructuredMessage (): MessageOrStructuredMessage { return this._messageOrStructuredMessage; }

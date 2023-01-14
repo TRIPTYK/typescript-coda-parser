@@ -3,10 +3,10 @@ import type Amount from '../values/amount.js';
 import type CodaDate from '../values/coda-date.js';
 import type PaperStatementSequenceNumber from '../values/paper-statement-sequence-number.js';
 import type StatementSequenceNumber from '../values/statement-sequence-number.js';
-import type { Line } from './line.js';
+import Line from './line.js';
 import { LineType } from './LineType.enum.js';
 
-export default class InitialStateLine implements Line {
+export default class InitialStateLine extends Line {
   public constructor (
     private _paperStatementSquenceNumber :PaperStatementSequenceNumber,
     private _statementSequenceNumber : StatementSequenceNumber,
@@ -14,7 +14,7 @@ export default class InitialStateLine implements Line {
     private _balance:Amount,
     private _date:CodaDate
   ) {
-
+    super()
   }
 
   public get account () {

@@ -1,5 +1,5 @@
 import IdentificationLine from '../lines/identification-line.js';
-import type { Line } from '../lines/line.js';
+import type Line from '../lines/line.js';
 import AccountName from '../values/account-name.js';
 import ApplicationCode from '../values/application-code.js';
 import BankIdentificationNumber from '../values/bank-identification-number.js';

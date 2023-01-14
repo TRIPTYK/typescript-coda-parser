@@ -53,5 +53,7 @@ export enum LineType {
     /// <summary>
     /// The trailer record (90).
     /// </summary>
-    EndSummary = 90
+    EndSummary = 90,
+
+    Unknown = 99
 };

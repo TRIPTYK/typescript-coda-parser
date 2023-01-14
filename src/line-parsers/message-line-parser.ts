@@ -1,4 +1,4 @@
-import type { Line } from '../lines/line.js';
+import type Line from '../lines/line.js';
 import MessageLine from '../lines/message-line.js';
 import Message from '../values/message.js';
 import SequenceNumberDetail from '../values/sequence-number-detail.js';

@@ -1,4 +1,4 @@
-import type { Line } from '../lines/line.js';
+import type Line from '../lines/line.js';
 import TransactionPart2Line from '../lines/transaction-part2-line.js';
 import Bic from '../values/bic.js';
 import CategoryPurpose from '../values/category-purpose.js';

@@ -30,5 +30,5 @@ export default async function parseLines (lines:string[]) {
   const lineParsers = initLineParsers();
   return lines.filter(line => line !== '' || line !== null).map(line => {
     return lineParsers.filter(parser => parser.canAcceptString(line)).map(parser => parser.parse(line));
-  });
+  }).flat();
 }

@@ -7,10 +7,10 @@ import type Purpose from '../values/purpose.js';
 import type SequenceNumber from '../values/sequence-number.js';
 import type SequenceNumberDetail from '../values/sequence-number-detail.js';
 import type TransactionCodeType from '../values/transaction-code-type.js';
-import type { Line } from './line.js';
+import Line from './line.js';
 import { LineType } from './LineType.enum.js';
 
-export default class TransactionPart2Line implements Line {
+export default class TransactionPart2Line extends Line {
   constructor (
     private _sequenceNumber:SequenceNumber,
     private _sequenceNumberDetail:SequenceNumberDetail,
@@ -22,7 +22,7 @@ export default class TransactionPart2Line implements Line {
     private _categoryPurpose:CategoryPurpose,
     private _purpose:Purpose
   ) {
-
+    super()
   }
 
   get categoryPurpose (): CategoryPurpose { return this._categoryPurpose; }

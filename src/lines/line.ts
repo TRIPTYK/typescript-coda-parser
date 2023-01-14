@@ -1,5 +1,7 @@
-import type { LineType } from './LineType.enum';
+import { LineType } from './LineType.enum.js';
 
-export interface Line{
-    getLineType():LineType,
+export default class Line {
+  getLineType ():LineType {
+    return LineType.Unknown;
+  }
 }

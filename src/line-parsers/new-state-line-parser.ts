@@ -1,4 +1,4 @@
-import type { Line } from '../lines/line.js';
+import type Line from '../lines/line.js';
 import NewStateLine from '../lines/new-state-line.js';
 import AccountFull from '../values/account-full.js';
 import Amount from '../values/amount.js';
