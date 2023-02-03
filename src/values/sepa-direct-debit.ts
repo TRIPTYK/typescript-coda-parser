@@ -14,7 +14,7 @@ export default class SepaDirectDebit {
     this._type = parseInt(_value.substring(6, 7));
     this._scheme = parseInt(_value.substring(7, 8));
     this._paidReason = parseInt(_value.substring(8, 9));
-    this._creditorIndentificationCode = getTrimmedData(_value, 9);
+    this._creditorIndentificationCode = getTrimmedData(_value, 9, 35);
     this._mandateReference = getTrimmedData(_value, 44);
   }
 

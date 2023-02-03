@@ -3,10 +3,11 @@ import type MessageOrStructuredMessage from '../values/message-or-structured-mes
 import type SequenceNumberDetail from '../values/sequence-number-detail.js';
 import type SequenceNumber from '../values/sequence-number.js';
 import type TransactionCode from '../values/transaction-code.js';
-import Line from './line.js';
 import { LineType } from './LineType.enum.js';
+import type InformationOrTransactionLine from './information-or-transaction-line-interface.js';
+import type Message from '../values/message.js';
 
-export default class InformationPart1Line extends Line {
+export default class InformationPart1Line implements InformationOrTransactionLine {
   constructor (
     private _sequenceNumber:SequenceNumber,
     private _sequenceNumberDetail:SequenceNumberDetail,
@@ -14,9 +15,10 @@ export default class InformationPart1Line extends Line {
     private _transactionCode:TransactionCode,
     private _messageOrStructuredMessage:MessageOrStructuredMessage
   ) {
-    super()
+
   }
 
+  get message ():Message { return this._messageOrStructuredMessage.message; }
   get bankReference (): BankReference { return this._bankReference; }
   get messageOrStructuredMessage (): MessageOrStructuredMessage { return this._messageOrStructuredMessage; }
   get sequenceNumber (): SequenceNumber { return this._sequenceNumber; }

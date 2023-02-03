@@ -16,6 +16,9 @@ export default class StructuredMessage {
       this._value = this._structuredMessageFull.substring(45, 57);
     } else if (this._structuredMessageType === '127' && transactionCode.family.value === '05') {
       this._sepaDirectDebit = new SepaDirectDebit(this._structuredMessageFull);
+      this._value = '';
+    } else {
+      this._value = '';
     }
   }
 

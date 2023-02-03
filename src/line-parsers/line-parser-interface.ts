@@ -1,4 +1,4 @@
-import type { Line } from '../lines/line.js';
+import type Line from '../lines/line.js';
 
 export default interface LineParser{
     canAcceptString(codaLine:string):boolean,

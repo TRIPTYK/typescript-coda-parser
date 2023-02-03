@@ -1,3 +1,4 @@
+/* eslint-disable max-statements */
 import { filterLinesOfTypes, getFirstLineOfType } from '../helpers.js';
 import IdentificationLine from '../lines/identification-line.js';
 import type InformationOrTransactionLine from '../lines/information-or-transaction-line-interface.js';
@@ -9,10 +10,11 @@ import NewStateLine from '../lines/new-state-line.js';
 import Statement from '../statements/statement.js';
 import AccountParser from './account-parser.js';
 import MessageParser from './message-parser.js';
+import TransactionParser from './transaction-parser.js';
 
 export default class StatementParser {
   parse (lines:Line[]) {
-    let date = null;
+    let date = new Date();
     const identificationLine:IdentificationLine | undefined = getFirstLineOfType(lines, IdentificationLine);
     if (identificationLine !== undefined) date = identificationLine.creationDate.value;
     let initialBalance = 0;
@@ -25,24 +27,36 @@ export default class StatementParser {
     const messageParser = new MessageParser();
     const informationalMessage = messageParser.parse(lines.filter(line => line.constructor === MessageLine) as MessageLine[]);
     const accountParser = new AccountParser();
-    accountParser.parse(filterLinesOfTypes(lines, [LineType.Identification, LineType.InitialState]));
+    const account = accountParser.parse(filterLinesOfTypes(lines, [LineType.Identification, LineType.InitialState]));
+    // console.log(filterLinesOfTypes(lines, [LineType.InformationPart1, LineType.InformationPart2, LineType.InformationPart3, LineType.TransactionPart1, LineType.TransactionPart2, LineType.TransactionPart3]).length)
+    const transactionLines = this.groupTransactions(filterLinesOfTypes(lines, [LineType.InformationPart1, LineType.InformationPart2, LineType.InformationPart3, LineType.TransactionPart1, LineType.TransactionPart2, LineType.TransactionPart3]) as InformationOrTransactionLine[]);
+    const transactionParser = new TransactionParser();
+    const transactions = Array.from(transactionLines).map(transaction => transactionParser.parse(transaction));
 
-    const transactionLines = this.groupTransactions()
-
-    return new Statement()
+    return new Statement(
+      date,
+      account,
+      initialBalance,
+      newBalance,
+      informationalMessage,
+      transactions
+    )
   }
 
   groupTransactions (lines:InformationOrTransactionLine[]) {
     let idx = -1;
-    const sequenceNumber = -1;
+    let sequenceNumber = -1;
     const transactions:Map<number, InformationOrTransactionLine[]> = new Map<number, InformationOrTransactionLine[]>();
+
     lines.forEach((line) => {
       if (transactions.size === 0 || sequenceNumber !== line.sequenceNumber.value) {
+        sequenceNumber = line.sequenceNumber.value;
         idx += 1;
         transactions.set(idx, [line]);
       }
       transactions.get(idx)?.push(line);
     });
+
     return transactions.values();
   }
 }

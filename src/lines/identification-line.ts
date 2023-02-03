@@ -9,10 +9,10 @@ import type FileReference from '../values/file-reference.js';
 import type RelatedReference from '../values/related-reference.js';
 import type TransactionReference from '../values/transaction-reference.js';
 import type VersionCode from '../values/verscion-code.js';
-import Line from './line.js';
+import type Line from './line.js';
 import { LineType } from './LineType.enum.js';
 
-export default class IdentificationLine extends Line {
+export default class IdentificationLine implements Line {
   public constructor (
     private _creationDate:CodaDate,
     private _bankIdentificationNumber:BankIdentificationNumber,
@@ -28,7 +28,7 @@ export default class IdentificationLine extends Line {
     private _versionCode:VersionCode
 
   ) {
-    super()
+
   }
 
   public get creationDate (): CodaDate {
