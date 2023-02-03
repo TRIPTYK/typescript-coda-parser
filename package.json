@@ -1,7 +1,8 @@
 {
   "name": "@gilles-bertrand/node-boilerplate.git",
   "version": "0.0.0-alpha.0",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "test": "NODE_ENV=test node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
     "compile": "tsc",
@@ -16,9 +17,6 @@
   "type": "module",
   "author": "Gilles BERTRAND",
   "license": "MIT",
-  "dependencies": {
-    "reflect-metadata": "~0.1.13"
-  },
   "homepage": "https://github.com/gilles-bertrand/node-boilerplate#readme",
   "devDependencies": {
     "@jest/globals": "^29.2.2",

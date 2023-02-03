@@ -39,5 +39,5 @@ async function parse (codaLines:string[]) {
 }
 
 async function fileToCodaLines (codaFile:string) {
-  return await (await readFile(codaFile, { encoding: 'utf-8' })).split(/\r?\n/).filter(line => line !== '' || line !== null);
+  return (await readFile(codaFile, { encoding: 'utf-8' })).split(/\r?\n/).filter(line => line !== '' || line !== null);
 }
