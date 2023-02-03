@@ -28,16 +28,13 @@ async function convertLinesToStatements (lines:Line[]) {
   return Array.from(linesGroupedPerStatement.values()).map(lines => {
     return parser.parse(lines);
   })
-
-  // for (const key of linesGroupedPerStatement.keys()) {
-  //   console.log(key); // Lokesh Raj John
-  // }
 }
+
 async function parse (codaLines:string[]) {
   const lines:Line[] = await parseLines(codaLines);
   return convertLinesToStatements(lines);
 }
 
-async function fileToCodaLines (codaFile:string) {
+export async function fileToCodaLines (codaFile:string) {
   return (await readFile(codaFile, { encoding: 'utf-8' })).split(/\r?\n/).filter(line => line !== '' || line !== null);
 }

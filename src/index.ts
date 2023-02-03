@@ -1,1 +1,1 @@
-export * from './coda-parser.js';
+export { default as parseCodafile, fileToCodaLines } from './coda-parser.js';

@@ -1,5 +1,5 @@
 {
-  "name": "@gilles-bertrand/node-boilerplate.git",
+  "name": "@gilles-bertrand/coda-parser",
   "version": "0.0.0-alpha.0",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
