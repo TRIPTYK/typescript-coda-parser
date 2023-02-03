@@ -4,11 +4,6 @@ import type Line from './lines/line.js';
 import { LineType } from './lines/LineType.enum.js';
 import StatementParser from './statement-parsers/statement-parser.js';
 
-export default async function parseCodafile (filePath : string) {
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  return (parse(await fileToCodaLines(filePath)))
-}
-
 async function groupTransactionPerStatement (lines:Line[]) {
   let idx = -1;
   const statements:Map<number, Line[]> = new Map<number, Line[]>();
@@ -30,11 +25,23 @@ async function convertLinesToStatements (lines:Line[]) {
   })
 }
 
-async function parse (codaLines:string[]) {
+export async function parseLinesToStatements (codaLines:string[]) {
   const lines:Line[] = await parseLines(codaLines);
   return convertLinesToStatements(lines);
 }
 
+export async function bufferToCodaLines (fileBuffer: Buffer) {
+  return fileBuffer.toString().split(/\r?\n/).filter(line => line !== '' || line !== null);
+}
+
 export async function fileToCodaLines (codaFile:string) {
-  return (await readFile(codaFile, { encoding: 'utf-8' })).split(/\r?\n/).filter(line => line !== '' || line !== null);
+  return bufferToCodaLines(await readFile(codaFile));
+}
+
+export async function parseCodaBuffer (buffer : Buffer) {
+  return parseLinesToStatements(await bufferToCodaLines(buffer))
+}
+
+export default async function parseCodafile (filePath : string) {
+  return parseLinesToStatements(await fileToCodaLines(filePath))
 }
