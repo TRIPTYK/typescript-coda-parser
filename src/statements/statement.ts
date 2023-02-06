@@ -1,5 +1,5 @@
-import type Account from './account';
-import type Transaction from './transaction';
+import type Account from './account.js';
+import type Transaction from './transaction.js';
 
 export default class Statement {
   constructor (

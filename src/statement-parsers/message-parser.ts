@@ -1,4 +1,4 @@
-import type MessageLine from '../lines/message-line';
+import type MessageLine from '../lines/message-line.js';
 
 export default class MessageParser {
   parse (messageLines:MessageLine[]) {

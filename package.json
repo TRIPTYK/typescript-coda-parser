@@ -1,6 +1,6 @@
 {
-  "name": "@gilles-bertrand/coda-parser",
-  "version": "0.0.0-alpha.0",
+  "name": "@triptyk/coda-parser",
+  "version": "0.0.0-alpha.3",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
@@ -14,10 +14,13 @@
     "start:test:ci": "NODE_ENV=test  INTERACTIVE_TESTS=true node --loader 'ts-node/esm' ./src/index.ts",
     "start:production": "NODE_ENV=production node ./dist/src/index.js"
   },
+  "files": [
+    "dist/src"
+  ],
   "type": "module",
   "author": "Gilles BERTRAND",
   "license": "MIT",
-  "homepage": "https://github.com/gilles-bertrand/node-boilerplate#readme",
+  "homepage": "https://github.com/triptyk/coda-parser",
   "devDependencies": {
     "@jest/globals": "^29.2.2",
     "@rollup/plugin-node-resolve": "~15.0.1",
@@ -47,7 +50,6 @@
     "tslib": "~2.4.1",
     "type-fest": "~2.19.0",
     "typescript": "~4.8.3"
-    
   },
   "volta": {
     "node": "18.12.1"
