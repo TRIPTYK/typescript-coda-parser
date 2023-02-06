@@ -79,8 +79,14 @@ export default class TransactionParser {
           break;
         default: throw new Error('Unknown line type');
       }
-      return prev + (m !== undefined ? m : '');
+      if (m === undefined || m === '') {
+        m = '';
+      } else {
+        m += ' ';
+      }
+      return prev + m;
     }, '');
+
     if (message === '' || message === undefined) {
       const transactionLine = getFirstLineOfType(lines, TransactionPart2Line);
 
@@ -88,7 +94,7 @@ export default class TransactionParser {
         message = transactionLine.clientReference.value;
       }
       const informationLines = filterLinesOfTypes(lines, [LineType.InformationPart1, LineType.InformationPart2, LineType.InformationPart3]);
-      if (message !== null && message !== '') {
+      if (message !== undefined && message !== '') {
         message += ' ';
       }
       message += informationLines.reduce((prev, line) => {
