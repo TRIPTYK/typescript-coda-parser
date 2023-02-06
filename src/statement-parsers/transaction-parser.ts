@@ -63,7 +63,7 @@ export default class TransactionParser {
       let m = null;
       switch (line.getLineType()) {
         case LineType.TransactionPart1:
-          m = (line as TransactionPart1Line).messageOrStructuredMessage.message;
+          m = (line as TransactionPart1Line).messageOrStructuredMessage.message.value;
           break;
         case LineType.TransactionPart2:
           m = (line as TransactionPart2Line).message.value;
