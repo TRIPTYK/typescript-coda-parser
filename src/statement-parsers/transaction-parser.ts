@@ -9,7 +9,7 @@ import TransactionPart1Line from '../lines/transaction-part1-line.js';
 import TransactionPart2Line from '../lines/transaction-part2-line.js';
 import type TransactionPart3Line from '../lines/transaction-part3-line.js';
 import Transaction from '../statements/transaction.js';
-import type SepaDirectDebit from '../values/sepa-direct-debit';
+import type SepaDirectDebit from '../values/sepa-direct-debit.js';
 import AccountOtherPartyParser from './account-other-party-parser.js';
 
 export default class TransactionParser {
