@@ -28,7 +28,7 @@ export default class StatementParser {
     const informationalMessage = messageParser.parse(lines.filter(line => line.constructor === MessageLine) as MessageLine[]);
     const accountParser = new AccountParser();
     const account = accountParser.parse(filterLinesOfTypes(lines, [LineType.Identification, LineType.InitialState]));
-    // console.log(filterLinesOfTypes(lines, [LineType.InformationPart1, LineType.InformationPart2, LineType.InformationPart3, LineType.TransactionPart1, LineType.TransactionPart2, LineType.TransactionPart3]).length)
+
     const transactionLines = this.groupTransactions(filterLinesOfTypes(lines, [LineType.InformationPart1, LineType.InformationPart2, LineType.InformationPart3, LineType.TransactionPart1, LineType.TransactionPart2, LineType.TransactionPart3]) as InformationOrTransactionLine[]);
     const transactionParser = new TransactionParser();
     const transactions = Array.from(transactionLines).map(transaction => transactionParser.parse(transaction));
@@ -53,10 +53,10 @@ export default class StatementParser {
         sequenceNumber = line.sequenceNumber.value;
         idx += 1;
         transactions.set(idx, [line]);
+      } else {
+        transactions.get(idx)?.push(line);
       }
-      transactions.get(idx)?.push(line);
     });
-
     return transactions.values();
   }
 }

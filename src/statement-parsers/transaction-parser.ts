@@ -33,18 +33,12 @@ export default class TransactionParser {
     }
     const informationPart1Line = getFirstLineOfType(lines, InformationPart1Line);
     let structuredMessage = '';
-    if (transactionPart1Line) {
-      if (transactionPart1Line.messageOrStructuredMessage.structuredMessage !== undefined) {
-        if (transactionPart1Line.messageOrStructuredMessage.structuredMessage.value !== null &&
+    if (transactionPart1Line && transactionPart1Line.messageOrStructuredMessage.structuredMessage !== undefined && transactionPart1Line.messageOrStructuredMessage.structuredMessage.value !== null &&
             transactionPart1Line.messageOrStructuredMessage.structuredMessage.value !== '') {
-          structuredMessage = transactionPart1Line?.messageOrStructuredMessage.structuredMessage.value;
-        }
-      } else if (informationPart1Line) {
-        if (informationPart1Line.messageOrStructuredMessage.structuredMessage.value !== null &&
+      structuredMessage = transactionPart1Line?.messageOrStructuredMessage.structuredMessage.value;
+    } else if (informationPart1Line && informationPart1Line.messageOrStructuredMessage.structuredMessage.value !== null &&
             informationPart1Line.messageOrStructuredMessage.structuredMessage.value !== '') {
-          structuredMessage = informationPart1Line.messageOrStructuredMessage.structuredMessage.value;
-        }
-      }
+      structuredMessage = informationPart1Line.messageOrStructuredMessage.structuredMessage.value;
     }
     const linesWithAccountInfo = filterLinesOfTypes(lines, [LineType.TransactionPart2, LineType.TransactionPart3]);
     const accountOtherPartyParser = new AccountOtherPartyParser();
@@ -69,7 +63,7 @@ export default class TransactionParser {
       let m = null;
       switch (line.getLineType()) {
         case LineType.TransactionPart1:
-          m = (line as TransactionPart1Line).messageOrStructuredMessage.value;
+          m = (line as TransactionPart1Line).messageOrStructuredMessage.message;
           break;
         case LineType.TransactionPart2:
           m = (line as TransactionPart2Line).message.value;
@@ -77,10 +71,11 @@ export default class TransactionParser {
         case LineType.TransactionPart3:
           m = (line as TransactionPart3Line).message.value;
           break;
+        default: throw new Error('Unknown line type');
       }
-      return prev + (m != null ? m : '');
+      return prev + (m !== undefined ? m : '');
     }, '');
-    if (message === '' || message === null) {
+    if (message === '' || message === undefined) {
       const transactionLine = getFirstLineOfType(lines, TransactionPart2Line);
 
       if (transactionLine != null && transactionLine.clientReference !== null) {
@@ -106,7 +101,6 @@ export default class TransactionParser {
         return prev + (m != null ? m : '');
       }, '');
     }
-
     return message.trim();
   }
 }

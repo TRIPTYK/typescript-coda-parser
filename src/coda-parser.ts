@@ -18,7 +18,6 @@ async function groupTransactionPerStatement (lines:Line[]) {
 }
 async function convertLinesToStatements (lines:Line[]) {
   const linesGroupedPerStatement = await groupTransactionPerStatement(lines);
-
   const parser = new StatementParser()
   return Array.from(linesGroupedPerStatement.values()).map(lines => {
     return parser.parse(lines);
