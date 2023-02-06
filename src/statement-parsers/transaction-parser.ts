@@ -36,7 +36,7 @@ export default class TransactionParser {
     if (transactionPart1Line && transactionPart1Line.messageOrStructuredMessage.structuredMessage !== undefined && transactionPart1Line.messageOrStructuredMessage.structuredMessage.value !== null &&
             transactionPart1Line.messageOrStructuredMessage.structuredMessage.value !== '') {
       structuredMessage = transactionPart1Line?.messageOrStructuredMessage.structuredMessage.value;
-    } else if (informationPart1Line && informationPart1Line.messageOrStructuredMessage.structuredMessage.value !== null &&
+    } else if (informationPart1Line && informationPart1Line.messageOrStructuredMessage.structuredMessage !== undefined && informationPart1Line.messageOrStructuredMessage.structuredMessage.value !== null &&
             informationPart1Line.messageOrStructuredMessage.structuredMessage.value !== '') {
       structuredMessage = informationPart1Line.messageOrStructuredMessage.structuredMessage.value;
     }
@@ -44,6 +44,7 @@ export default class TransactionParser {
     const accountOtherPartyParser = new AccountOtherPartyParser();
     const account = accountOtherPartyParser.parse(linesWithAccountInfo);
     const message = this.constructMessage(lines);
+
     return new Transaction(
       account,
       statementSquence,
@@ -63,10 +64,15 @@ export default class TransactionParser {
       let m = null;
       switch (line.getLineType()) {
         case LineType.TransactionPart1:
-          m = (line as TransactionPart1Line).messageOrStructuredMessage.message;
+          if ((line as TransactionPart1Line).messageOrStructuredMessage.message) {
+            m = (line as TransactionPart1Line).messageOrStructuredMessage.message.value;
+          } else {
+            m = (line as TransactionPart1Line).messageOrStructuredMessage.message;
+          }
           break;
         case LineType.TransactionPart2:
           m = (line as TransactionPart2Line).message.value;
+          // console.log(m)
           break;
         case LineType.TransactionPart3:
           m = (line as TransactionPart3Line).message.value;
@@ -90,15 +96,19 @@ export default class TransactionParser {
         switch (line.getLineType()) {
           case LineType.InformationPart1:
             m = (line as InformationPart1Line).messageOrStructuredMessage.message;
+
             break;
           case LineType.InformationPart2:
             m = (line as InformationPart2Line).message.value;
+
             break;
           case LineType.InformationPart3:
             m = (line as InformationPart3Line).message.value;
+
             break;
         }
-        return prev + (m != null ? m : '');
+
+        return prev + (m !== undefined ? m : '');
       }, '');
     }
     return message.trim();

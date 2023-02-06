@@ -19,6 +19,6 @@ describe('Parser End to End', () => {
 
   test('should parse message on multiple lines information', async () => {
     const result = await parseCodafile(`${process.cwd()}/tests/samples/sample4.cod`);
-    expect(result[0].transactions[0].message).toStrictEqual('Europese overschrijving (zie bijlage)  + 17.233,54Van: COMPANY BLABLABLAH BVBA - BE64NOT PR');
+    expect(result[0].transactions[0].message).toStrictEqual('Europese overschrijving (zie bijlage)+ 17.233,54Van: COMPANY BLABLABLAH BVBA - BE64NOT PR');
   })
 })
